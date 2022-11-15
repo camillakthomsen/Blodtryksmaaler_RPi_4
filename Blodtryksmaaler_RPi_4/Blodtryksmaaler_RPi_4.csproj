@@ -15,12 +15,6 @@
     <ProjectReference Include="..\LogicLayer_RPi\LogicLayer_RPi.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="RaspberryNetCore">
-      <HintPath>C:\RaspberryPi\RaspberryNetCore.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
   <Target Name="LinuxDeployment" AfterTargets="PostBuildEvent">
     <Message Importance="high" Text="Linux deployment locally after VS Build of $(ProjectName)" />
     <MSBuild Condition="'$(DeployOnBuild)'!='true'" Projects="$(MSBuildProjectFullPath)" Properties="DeployOnBuild=true;PublishProfile=RPi;" />
