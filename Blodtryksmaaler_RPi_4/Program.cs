@@ -9,11 +9,13 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Blodtryksmåling i gang");
 
             IBPCalculator bPCalculator = new BPCalculator();
+            IAlarmChecker alarmChecker = new AlarmChecker();
 
-            measurementcontroleRPi test = new measurementcontroleRPi(bPCalculator);
+
+            measurementcontroleRPi test = new measurementcontroleRPi(bPCalculator, alarmChecker);
 
             while(true)
             {

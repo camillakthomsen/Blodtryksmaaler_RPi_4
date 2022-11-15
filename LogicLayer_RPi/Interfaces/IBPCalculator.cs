@@ -8,9 +8,9 @@ namespace LogicLayer_RPi.Interfaces
 {
     public interface IBPCalculator
     {
-        double getMiddleBP();
-        double getSysBP();
-        double getDiaBP();
+        double getMiddleBP(List<double> measurement);
+        double getSysBP(List<double> measurement);
+        double getDiaBP(List<double> measurement);
 
     }
 }

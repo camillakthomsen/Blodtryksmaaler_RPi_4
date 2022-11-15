@@ -8,21 +8,19 @@ namespace LogicLayer_RPi
     {
         receivesBloodPressureMeasurement receivesBloodPressure;
         sendingBloodPressureMeasurement sendingBloodPressure;
-        IBPCalculator BPCalculator;
+        IBPCalculator bPCalculator;
+        IAlarmChecker alarmChecker;
         
-        public measurementcontroleRPi(IBPCalculator bPCalculator)
+        public measurementcontroleRPi(IBPCalculator bPCalculator, IAlarmChecker alarmChecker)
         {
             receivesBloodPressure = new receivesBloodPressureMeasurement();
             sendingBloodPressure = new sendingBloodPressureMeasurement();
-            BPCalculator = bPCalculator;
+            this.bPCalculator = bPCalculator;
+            this.alarmChecker = alarmChecker; 
         }
         public void GetBPData()
         {
             List<double> voltages = new List<double>();
-
-            voltages.Add(BPCalculator.getMiddleBP());
-            voltages.Add(BPCalculator.getDiaBP());
-            voltages.Add(BPCalculator.getSysBP());
 
             for (int i = 0; i < 200; i++)
             {
@@ -30,7 +28,19 @@ namespace LogicLayer_RPi
                 voltages.Add(voltage);
                 Thread.Sleep(5);
             }
-            sendingBloodPressure.SendToPC(voltages);
+            List<double> measurement = new List<double>();
+
+            measurement.Add(alarmChecker.checkAlarm(voltages));
+            measurement.Add(bPCalculator.getMiddleBP(voltages));
+            measurement.Add(bPCalculator.getDiaBP(voltages));
+            measurement.Add(bPCalculator.getSysBP(voltages));
+
+            foreach(double voltage in voltages)
+            {
+                measurement.Add(voltage);
+            }
+
+            sendingBloodPressure.SendToPC(measurement);
         }
     }
 }

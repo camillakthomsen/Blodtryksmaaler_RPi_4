@@ -9,15 +9,15 @@ namespace LogicLayer_RPi
 {
     public class BPCalculator : IBPCalculator
     {
-        public double getMiddleBP()
+        public double getMiddleBP(List<double> measurement)
         {
             return 0;
         }
-        public double getSysBP()
+        public double getSysBP(List<double> measurement)
         {
             return 0;
         }
-        public double getDiaBP()
+        public double getDiaBP(List<double> measurement)
         {
             return 0;
         }
