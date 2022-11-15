@@ -14,7 +14,6 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
             IBPCalculator bPCalculator = new BPCalculator();
             IAlarmChecker alarmChecker = new AlarmChecker();
 
-
             measurementcontroleRPi test = new measurementcontroleRPi(bPCalculator, alarmChecker);
 
             while(true)
