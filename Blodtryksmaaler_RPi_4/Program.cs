@@ -1,6 +1,7 @@
 ﻿using System;
 using LogicLayer_RPi;
 using System.Threading;
+using LogicLayer_RPi.Interfaces;
 
 namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
 {
@@ -10,14 +11,13 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
         {
             Console.WriteLine("Hello World!");
 
-            measurementcontroleRPi test = new measurementcontroleRPi();
+            IBPCalculator bPCalculator = new BPCalculator();
+
+            measurementcontroleRPi test = new measurementcontroleRPi(bPCalculator);
+
             while(true)
             {
-                foreach (double s in test.GetBPData())
-                {
-                    Console.WriteLine(Convert.ToString(s));
-                }
-
+                test.GetBPData();
             }
                
         }

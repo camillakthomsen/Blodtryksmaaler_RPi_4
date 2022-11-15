@@ -1,4 +1,5 @@
 ﻿using DataLayer_RPi;
+using LogicLayer_RPi.Interfaces;
 using System.Threading;
 
 namespace LogicLayer_RPi
@@ -6,25 +7,30 @@ namespace LogicLayer_RPi
     public class measurementcontroleRPi
     {
         receivesBloodPressureMeasurement receivesBloodPressure;
-        List<double> voltages;
-        public measurementcontroleRPi()
+        sendingBloodPressureMeasurement sendingBloodPressure;
+        IBPCalculator BPCalculator;
+        
+        public measurementcontroleRPi(IBPCalculator bPCalculator)
         {
             receivesBloodPressure = new receivesBloodPressureMeasurement();
+            sendingBloodPressure = new sendingBloodPressureMeasurement();
+            BPCalculator = bPCalculator;
         }
-        public List<double> GetBPData()
+        public void GetBPData()
         {
-            voltages = new List<double>();
+            List<double> voltages = new List<double>();
 
-            for(int i = 0; i < 200; i++)
+            voltages.Add(BPCalculator.getMiddleBP());
+            voltages.Add(BPCalculator.getDiaBP());
+            voltages.Add(BPCalculator.getSysBP());
+
+            for (int i = 0; i < 200; i++)
             {
                 double voltage = receivesBloodPressure.MeasureBP();
                 voltages.Add(voltage);
                 Thread.Sleep(5);
-
             }
-            
-
-            return voltages;
+            sendingBloodPressure.SendToPC(voltages);
         }
     }
 }
