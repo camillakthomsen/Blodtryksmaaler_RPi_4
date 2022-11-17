@@ -22,8 +22,7 @@ namespace LogicLayer_RPi
                 Thread.Sleep(5);
 
             }
-            
-
+       
             return voltages;
         }
     }
