@@ -26,11 +26,11 @@ namespace LogicLayer_RPi
             {
                 double voltage = receivesBloodPressure.MeasureBP();
                 voltages.Add(voltage);
-                Thread.Sleep(5);
+                Thread.Sleep(1);
             }
             List<double> measurement = new List<double>();
 
-            measurement.Add(alarmChecker.checkAlarm(voltages));
+            measurement.Add(bPCalculator.getPuls(voltages));
             measurement.Add(bPCalculator.getMiddleBP(voltages));
             measurement.Add(bPCalculator.getDiaBP(voltages));
             measurement.Add(bPCalculator.getSysBP(voltages));

@@ -17,12 +17,14 @@ namespace DataLayer_RPi
         public void SendToPC(List<double> measurement)
         {
             string message = convertListToString(measurement);
+            //string message = " hej";
 
             byte[] packet = Encoding.ASCII.GetBytes(message);
 
             try
             {
                 udpClient.Send(packet, packet.Length, IPAddress.Broadcast.ToString(), receiverPortNo);
+                
             }
             catch (Exception e)
             {

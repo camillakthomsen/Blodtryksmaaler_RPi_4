@@ -9,6 +9,10 @@ namespace LogicLayer_RPi
 {
     public class BPCalculator : IBPCalculator
     {
+        public double getPuls(List<double> measurement)
+        {
+            return 0;
+        }
         public double getMiddleBP(List<double> measurement)
         {
             return 0;

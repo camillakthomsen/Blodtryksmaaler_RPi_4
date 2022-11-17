@@ -12,5 +12,7 @@ namespace LogicLayer_RPi.Interfaces
         double getSysBP(List<double> measurement);
         double getDiaBP(List<double> measurement);
 
+        double getPuls(List<double> measurement);
+
     }
 }
