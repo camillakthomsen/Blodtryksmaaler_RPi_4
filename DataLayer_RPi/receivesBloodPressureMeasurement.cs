@@ -10,14 +10,16 @@ namespace DataLayer_RPi
 
         public double MeasureBP()
         {
+            ADC.ReadADC_SingleEnded(0);
+            ADC.ReadADC_SingleEnded(1);
+            
+            voltage = Convert.ToDouble((ADC.SINGLE_Measurement[1].Take() / 2048.0) * 6.144);
 
-                ADC.ReadADC_SingleEnded(1);
-                voltage = Convert.ToDouble((ADC.SINGLE_Measurement[1].Take() / 2048.0) * 6.144);
-
+            ADC.Stop_SingleEnded(0);
+            ADC.Stop_SingleEnded(1);
                 
-                ADC.Stop_SingleEnded(1);
 
-                return voltage;
+            return voltage;
         }
     }
 }
