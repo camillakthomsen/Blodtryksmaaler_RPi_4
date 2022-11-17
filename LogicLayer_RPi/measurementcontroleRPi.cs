@@ -15,7 +15,7 @@ namespace LogicLayer_RPi
         {
             receivesBloodPressure = new receivesBloodPressureMeasurement();
             sendingBloodPressure = new sendingBloodPressureMeasurement();
-            this.bPCalculator = bPCalculator;
+            this.bPCalculator = bPCalculator; 
             this.alarmChecker = alarmChecker; 
         }
         public void GetBPData()
