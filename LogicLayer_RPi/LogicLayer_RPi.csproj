@@ -10,10 +10,4 @@
     <ProjectReference Include="..\DataLayer_RPi\DataLayer_RPi.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="RaspberryNetCore">
-      <HintPath>..\..\..\Blodtryksmaaler_RPi_2\Blodtryksmaaler_RPi_2\DataLayer_RPi_\bin\Debug\net6.0\RaspberryNetCore.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

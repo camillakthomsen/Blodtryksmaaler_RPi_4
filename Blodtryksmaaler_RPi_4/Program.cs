@@ -1,11 +1,7 @@
-﻿using RaspberryPiNetCore.ADC;
-using RaspberryPiNetCore.JoySticks;
-using RaspberryPiNetCore.LCD;
-using RaspberryPiNetCore.TWIST;
-using System;
+﻿using System;
 using LogicLayer_RPi;
-using DataLayer_RPi;
 using System.Threading;
+using LogicLayer_RPi.Interfaces;
 
 namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
 {
@@ -13,16 +9,16 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Blodtryksmåling i gang");
 
-            measurementcontroleRPi test = new measurementcontroleRPi();
+            IBPCalculator bPCalculator = new BPCalculator();
+            IAlarmChecker alarmChecker = new AlarmChecker();
+
+            measurementcontroleRPi test = new measurementcontroleRPi(bPCalculator, alarmChecker);
+
             while(true)
             {
-                foreach (double s in test.GetBPData())
-                {
-                    Console.WriteLine(Convert.ToString(s));
-                }
-
+                test.GetBPData();
             }
                
         }
