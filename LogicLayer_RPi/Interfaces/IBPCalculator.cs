@@ -8,11 +8,13 @@ namespace LogicLayer_RPi.Interfaces
 {
     public interface IBPCalculator
     {
-        double getMiddleBP(List<double> measurement);
-        double getSysBP(List<double> measurement);
-        double getDiaBP(List<double> measurement);
+        void calcAverage(List<double> measurement);
+        double getSysBP(int bpDataPoints, double averageB);
+        double getDiaBP(int bpDataPoints, double averageBP);
+        double getMiddleBP();
+        int getPuls();
 
-        double getPuls(List<double> measurement);
+
 
     }
 }

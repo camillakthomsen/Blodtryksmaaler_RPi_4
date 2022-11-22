@@ -9,14 +9,12 @@ namespace LogicLayer_RPi
         receivesBloodPressureMeasurement receivesBloodPressure;
         sendingBloodPressureMeasurement sendingBloodPressure;
         IBPCalculator bPCalculator;
-        IAlarmChecker alarmChecker;
         
-        public measurementcontroleRPi(IBPCalculator bPCalculator, IAlarmChecker alarmChecker)
+        public measurementcontroleRPi(IBPCalculator bPCalculator)
         {
             receivesBloodPressure = new receivesBloodPressureMeasurement();
             sendingBloodPressure = new sendingBloodPressureMeasurement();
             this.bPCalculator = bPCalculator; 
-            this.alarmChecker = alarmChecker; 
         }
         public void GetBPData()
         {
@@ -30,10 +28,10 @@ namespace LogicLayer_RPi
             }
             List<double> measurement = new List<double>();
 
-            measurement.Add(bPCalculator.getPuls(voltages));
-            measurement.Add(bPCalculator.getMiddleBP(voltages));
-            measurement.Add(bPCalculator.getDiaBP(voltages));
-            measurement.Add(bPCalculator.getSysBP(voltages));
+            measurement.Add(0);
+            measurement.Add(0);
+            measurement.Add(0);
+            measurement.Add(0);
 
             foreach(double voltage in voltages)
             {

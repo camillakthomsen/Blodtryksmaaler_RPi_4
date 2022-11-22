@@ -15,7 +15,7 @@ namespace LogicLayer_RPi
         public int puls { get; private set; }
         public List<double> measurement;
 
-        public void calcAverage(List<double>measurement)
+        public void calcAverage(List<double> measurement)
         {
             double totalBP = measurement.Sum();
             int bpDataPoints = measurement.Count();
