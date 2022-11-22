@@ -2,6 +2,8 @@
 using LogicLayer_RPi;
 using System.Threading;
 using LogicLayer_RPi.Interfaces;
+using DataLayer_RPi.Interfaces;
+using DataLayer_RPi;
 
 namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
 {
@@ -12,15 +14,15 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
             Console.WriteLine("Blodtryksmåling i gang");
 
             IBPCalculator bPCalculator = new BPCalculator();
-            IAlarmChecker alarmChecker = new AlarmChecker();
-
-            measurementcontroleRPi test = new measurementcontroleRPi(bPCalculator, alarmChecker);
+            
+            IReceviesBloodPressureMeasurement receviesBloodPressureMeasurement = new receivesBloodPressureMeasurement();
+            ISendingBloodPressureMeasurement sendingBloodPressureMeasurement = new sendingBloodPressureMeasurement();
+            measurementcontroleRPi test = new measurementcontroleRPi(bPCalculator, receviesBloodPressureMeasurement, sendingBloodPressureMeasurement); ;
 
             while(true)
             {
                 test.GetBPData();
             }
-               
         }
     }
 }

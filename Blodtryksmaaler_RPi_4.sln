@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer_RPi", "DataLayer_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicLayer_RPi", "LogicLayer_RPi\LogicLayer_RPi.csproj", "{1E85D97E-B792-465D-BFD5-09AD25E56203}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blodtryksmaaler_RPi_4.unit.test", "Blodtryksmaaler_RPi_4.unit.test\Blodtryksmaaler_RPi_4.unit.test.csproj", "{8429F384-9CC4-4F70-AD4C-431515ADD7C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blodtryksmaaler_RPi_4.NUnit.test", "Blodtryksmaaler_RPi_4.unit.test\Blodtryksmaaler_RPi_4.NUnit.test.csproj", "{8429F384-9CC4-4F70-AD4C-431515ADD7C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

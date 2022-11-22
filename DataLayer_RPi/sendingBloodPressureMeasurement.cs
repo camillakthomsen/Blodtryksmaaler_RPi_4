@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLayer_RPi.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer_RPi
 {
-    public class sendingBloodPressureMeasurement
+    public class sendingBloodPressureMeasurement : ISendingBloodPressureMeasurement
     {
         private static int receiverPortNo = 12000;
         private UdpClient udpClient = new UdpClient();
