@@ -19,20 +19,14 @@ namespace LogicLayer_RPi
         }
         public void GetBPData()
         {
-            List<double> measurement = new List<double>();
+            
+            List<double> voltages = receivesBloodPressure.MeasureBP();
+            List<double> measurement = voltages;
+
+            double[] values = bPCalculator.getValues(voltages);
 
             //De fire beregnede værdier fra BPCalculator tilføjes her
-            measurement.Add(0);
-            measurement.Add(0);
-            measurement.Add(0);
-            measurement.Add(0);
-
-            List<double> voltages = receivesBloodPressure.MeasureBP();
-
-            foreach(double voltage in voltages)
-            {
-                measurement.Add(voltage);
-            }
+            measurement.AddRange(values);
 
             sendingBloodPressure.SendToPC(measurement);
         }
