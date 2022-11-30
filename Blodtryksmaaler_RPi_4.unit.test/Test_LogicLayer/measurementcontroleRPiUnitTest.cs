@@ -135,12 +135,9 @@ namespace Blodtryksmaaler_RPi_4.NUnit.test_LogicLayer
         }
 
 
-
-        [TestCase(1, 2, 3, 3, 4, 5, 6, 1)]
-        [TestCase(1, 2, 3, 3, 4, 5, 6, 10)]
-        [TestCase(1, 2, 3, 3, 4, 5, 6, 1000)]
+        [TestCase(1, 2, 3, 3, 4, 5, 6)]
         public void GetBPDataMoreTimes_MeasureBPIsCalledMoreTimes(double a, double b, double c, double d, double e,
-            double f, double g, int count)
+            double f, double g)
         {
             //Arrange
             list = new List<double>();
@@ -155,15 +152,12 @@ namespace Blodtryksmaaler_RPi_4.NUnit.test_LogicLayer
 
             //Act
             uut.GetBPData();
+            uut.GetBPData();
 
-            for (int i = 1; i<count;count++)
-            {
-                uut.GetBPData();
-            }
-            
             //Assert
-            receviesBloodPressure.Received(count).MeasureBP();
+            receviesBloodPressure.Received(2).MeasureBP();
         }
     }
-    
+
+
 }
