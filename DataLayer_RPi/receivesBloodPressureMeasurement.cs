@@ -16,13 +16,13 @@ namespace DataLayer_RPi
                         
             for (int i = 0; i < 200; i++)
             {
-                ADC.ReadADC_SingleEnded(0);
                 ADC.ReadADC_SingleEnded(1);
+                ADC.ReadADC_SingleEnded(2);
 
-                voltage = Convert.ToDouble(ADC.SINGLE_Measurement[1].Take() - ADC.SINGLE_Measurement[0].Take());
+                voltage = Convert.ToDouble(((ADC.SINGLE_Measurement[2].Take() - ADC.SINGLE_Measurement[1].Take()/ 2048.0))*4.096);
 
-                ADC.Stop_SingleEnded(0);
                 ADC.Stop_SingleEnded(1);
+                ADC.Stop_SingleEnded(2);
 
                 voltages.Add(voltage);
                 Thread.Sleep(1);

@@ -9,26 +9,17 @@ namespace LogicLayer_RPi
     {
         IReceviesBloodPressureMeasurement receivesBloodPressure;
         ISendingBloodPressureMeasurement sendingBloodPressure;
-        IBPCalculator bPCalculator;
         
-        public measurementcontroleRPi(IBPCalculator bPCalculator, IReceviesBloodPressureMeasurement receviesBloodPressure, ISendingBloodPressureMeasurement sendingBloodPressure)
+        public measurementcontroleRPi(IReceviesBloodPressureMeasurement receviesBloodPressure, ISendingBloodPressureMeasurement sendingBloodPressure)
         {
             this.receivesBloodPressure = receviesBloodPressure;
             this.sendingBloodPressure = sendingBloodPressure;
-            this.bPCalculator = bPCalculator; 
         }
         public void GetBPData()
         {
-            
             List<double> voltages = receivesBloodPressure.MeasureBP();
-            List<double> measurement = voltages;
-
-            double[] values = bPCalculator.getValues(voltages);
-
-            //De fire beregnede værdier fra BPCalculator tilføjes her
-            measurement.AddRange(values);
-
-            sendingBloodPressure.SendToPC(measurement);
+            
+            sendingBloodPressure.SendToPC(voltages);
         }
     }
 }
