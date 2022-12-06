@@ -33,12 +33,14 @@ namespace Blodtryksmaaler_RPi_4.NUnit.test_LogicLayer
         [Test]
         public void SetUpUUT_SendToPCNotCalled()
         {
+            list = new List<double>();
+            
             sendingBloodPressure.DidNotReceive().SendToPC(list);
         }
 
         //Det testes, at der ikke hentes målinger, når uut er oprettet.
         [Test]
-        public void SetUpUUT_MeasureVPNotCalled()
+        public void SetUpUUT_MeasureBPNotCalled()
         {
             receviesBloodPressure.DidNotReceive().MeasureBP();
         }
@@ -69,8 +71,7 @@ namespace Blodtryksmaaler_RPi_4.NUnit.test_LogicLayer
             receviesBloodPressure.Received(1).MeasureBP();
         }
 
-        //Det testes om metoden SendToPC bliver kaldt i datalaget, når metoden GetBPData() i logiklaget kaldes
-        //For at teste de laves et array, som skal simulere 4 beregende værdier. Denne tilføjes til test-listen.
+        //Det testes om metoden SendToPC bliver kaldt i datalaget, når metoden GetBPData() i logiklaget kaldes.
         [TestCase(1, 2, 3, 3, 4, 5, 6)]
         [TestCase(231.1, 0, 0, 0, 200, 21, -323)]
         [TestCase(22123, 20, -2932, 1.2324, 202.210, 1234.21, -2.22)]
@@ -97,6 +98,9 @@ namespace Blodtryksmaaler_RPi_4.NUnit.test_LogicLayer
 
 
         [TestCase(1, 2, 3, 3, 4, 5, 6)]
+        [TestCase(231.1, 0, 0, 0, 200, 21, -323)]
+        [TestCase(22123, 20, -2932, 1.2324, 202.210, 1234.21, -2.22)]
+        [TestCase(324124, 2.2, -24, 32, 43201.1, 0.5, 23)]
         public void GetBPDataMoreTimes_MeasureBPIsCalledMoreTimes(double a, double b, double c, double d, double e,
             double f, double g)
         {

@@ -1,6 +1,5 @@
 ﻿using DataLayer_RPi;
 using DataLayer_RPi.Interfaces;
-using LogicLayer_RPi.Interfaces;
 using System.Threading;
 
 namespace LogicLayer_RPi
@@ -18,7 +17,12 @@ namespace LogicLayer_RPi
         public void GetBPData()
         {
             List<double> voltages = receivesBloodPressure.MeasureBP();
-            
+
+            //foreach (double voltage in voltages)
+            //{
+            //    Console.WriteLine(Convert.ToString(voltage));
+            //}
+
             sendingBloodPressure.SendToPC(voltages);
         }
     }
