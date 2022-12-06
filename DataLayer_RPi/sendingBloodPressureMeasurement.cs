@@ -13,8 +13,7 @@ namespace DataLayer_RPi
     {
         private static int receiverPortNo = 12000;
         private UdpClient udpClient = new UdpClient();
-      
-      
+        
         public void SendToPC(List<double> measurement)
         {
             string message = convertListToString(measurement);
