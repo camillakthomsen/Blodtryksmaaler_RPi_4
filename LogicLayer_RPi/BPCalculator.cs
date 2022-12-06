@@ -45,7 +45,7 @@ namespace LogicLayer_RPi
 
             double sys = highPeakTotal / highPeakCounter;
             systole = sys;
-            puls = highPeakCounter;
+            puls = highPeakCounter*20;
             return systole;
         }
         public double getDiaBP(int bpDataPoints, double averageBP)
