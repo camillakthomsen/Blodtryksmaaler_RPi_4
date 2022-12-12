@@ -5,7 +5,7 @@ namespace DataLayer_RPi
 {
     public class receivesBloodPressureMeasurement : IReceviesBloodPressureMeasurement
     {
-       private ADC1015 ADC = new ADC1015(72,512);
+       private ADC1015 ADC = new ADC1015(72,310);
         private List<double> voltages;
 
         public List<double> MeasureBP()
@@ -17,7 +17,7 @@ namespace DataLayer_RPi
                 ADC.ReadADC_SingleEnded(1);
                 ADC.ReadADC_SingleEnded(2);
 
-                double voltage = Convert.ToDouble(((ADC.SINGLE_Measurement[2].Take() - ADC.SINGLE_Measurement[1].Take()) / 2048.0) * 4.096);
+                double voltage = Convert.ToDouble(((ADC.SINGLE_Measurement[2].Take() - ADC.SINGLE_Measurement[1].Take()) / 2048.0) * 2.048);
 
                 ADC.Stop_SingleEnded(1);
                 ADC.Stop_SingleEnded(2);
