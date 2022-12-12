@@ -18,10 +18,10 @@ namespace LogicLayer_RPi
         {
             List<double> voltages = receivesBloodPressure.MeasureBP();
 
-            //foreach (double voltage in voltages)
-            //{
-            //    Console.WriteLine(Convert.ToString(voltage));
-            //}
+            foreach (double voltage in voltages)
+            {
+                Console.WriteLine(Convert.ToString(voltage));
+            }
 
             sendingBloodPressure.SendToPC(voltages);
         }

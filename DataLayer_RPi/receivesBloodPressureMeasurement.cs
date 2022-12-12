@@ -5,7 +5,7 @@ namespace DataLayer_RPi
 {
     public class receivesBloodPressureMeasurement : IReceviesBloodPressureMeasurement
     {
-       private ADC1015 ADC = new ADC1015(72,310);
+       private ADC1015 ADC = new ADC1015(/*72,313*/);
         private List<double> voltages;
 
         public List<double> MeasureBP()
