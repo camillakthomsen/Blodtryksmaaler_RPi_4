@@ -12,18 +12,23 @@ namespace DataLayer_RPi
         {
             voltages = new List<double>();
                         
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < 100; i++)
             {
                 ADC.ReadADC_SingleEnded(1);
                 ADC.ReadADC_SingleEnded(2);
+                var kanal2 = ADC.SINGLE_Measurement[2].Take();
+                var kanal1 = ADC.SINGLE_Measurement[1].Take();
+                //Console.WriteLine(kanal2);
+                //Console.WriteLine(kanal1);
 
-                double voltage = Convert.ToDouble(((ADC.SINGLE_Measurement[2].Take() - ADC.SINGLE_Measurement[1].Take()) / 2048.0) * 2.048);
+                double voltage = Convert.ToDouble(((kanal2 - kanal1) / 2048.0) * 2.048);
+                Console.WriteLine(voltage);
 
                 ADC.Stop_SingleEnded(1);
                 ADC.Stop_SingleEnded(2);
 
                 voltages.Add(voltage);
-                Thread.Sleep(5);
+                //Thread.Sleep();
             }
 
 
