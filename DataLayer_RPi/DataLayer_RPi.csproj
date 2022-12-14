@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Reference Include="RaspberryNetCore">
-		<HintPath>C:\RaspberryPi\RaspberryNetCore.dll</HintPath>
+      <HintPath>bin\Debug\net6.0\RaspberryNetCore.dll</HintPath>
     </Reference>
   </ItemGroup>
 
