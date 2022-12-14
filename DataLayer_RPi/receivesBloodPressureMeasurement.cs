@@ -11,11 +11,14 @@ namespace DataLayer_RPi
         public List<double> MeasureBP()
         {
             voltages = new List<double>();
-                        
-            for (int i = 0; i < 100; i++)
+            ADC.SamplingsRate = 200;
+
+            ADC.ReadADC_SingleEnded(1);
+            ADC.ReadADC_SingleEnded(2);
+
+            for (int i = 0; i < 200; i++)
             {
-                ADC.ReadADC_SingleEnded(1);
-                ADC.ReadADC_SingleEnded(2);
+               
                 var kanal2 = ADC.SINGLE_Measurement[2].Take();
                 var kanal1 = ADC.SINGLE_Measurement[1].Take();
                 //Console.WriteLine(kanal2);
@@ -24,12 +27,11 @@ namespace DataLayer_RPi
                 double voltage = Convert.ToDouble(((kanal2 - kanal1) / 2048.0) * 2.048);
                 Console.WriteLine(voltage);
 
-                ADC.Stop_SingleEnded(1);
-                ADC.Stop_SingleEnded(2);
-
                 voltages.Add(voltage);
-                //Thread.Sleep();
+                //Thread.Sleep(5);
             }
+
+   
 
 
             return voltages;
