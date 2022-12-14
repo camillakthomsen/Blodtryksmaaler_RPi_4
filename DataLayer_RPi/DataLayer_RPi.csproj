@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Reference Include="RaspberryNetCore">
-      <HintPath>bin\Debug\net6.0\RaspberryNetCore.dll</HintPath>
+      <HintPath>..\..\..\Blodtryksmaaler_RPi_2\Blodtryksmaaler_RPi_2\DataLayer_RPi_\bin\Debug\net6.0\RaspberryNetCore.dll</HintPath>
     </Reference>
   </ItemGroup>
 

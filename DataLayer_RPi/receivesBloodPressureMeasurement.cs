@@ -8,20 +8,16 @@ namespace DataLayer_RPi
        private ADC1015 ADC = new ADC1015(/*72, 313*/);
        private List<double> voltages;
 
-       public receivesBloodPressureMeasurement()
-       {
-           ADC.SamplingsRate = 150;
-       }
 
         public List<double> MeasureBP()
         {
             voltages = new List<double>();
-            ADC.SamplingsRate = 200;
+            ADC.SamplingsRate = 150;
 
             ADC.ReadADC_SingleEnded(1);
             ADC.ReadADC_SingleEnded(2);
 
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < 150; i++)
             {
                
                 var kanal2 = ADC.SINGLE_Measurement[2].Take();
