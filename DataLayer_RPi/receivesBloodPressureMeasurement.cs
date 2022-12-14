@@ -29,8 +29,8 @@ namespace DataLayer_RPi
                 //Console.WriteLine(kanal2);
                 //Console.WriteLine(kanal1);
 
-            //    double voltage = Convert.ToDouble(((kanal2 - kanal1) / 2048.0) * 2.048);
-            //    Console.WriteLine(voltage);
+                double voltage = Convert.ToDouble(((kanal2 - kanal1) / 2048.0) * 2.048);
+                Console.WriteLine(voltage);
 
                 voltages.Add(voltage);
                 //Thread.Sleep(5);
